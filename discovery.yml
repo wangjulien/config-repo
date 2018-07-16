@@ -1,6 +1,4 @@
 spring:
-  main:
-    banner-mode: "off"
   application:
     name: discovery
 
@@ -11,7 +9,7 @@ eureka:
   instance:
     hostname: localhost
   client:
-    serviceUrl:
-      defaultZone: http://localhost:8082/eureka/
+    service-url:
+      default-zone: http://localhost:8082/eureka/
     register-with-eureka: false
     fetch-registry: false
