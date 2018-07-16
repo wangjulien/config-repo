@@ -7,7 +7,6 @@ server:
   
 eureka:
   client:
-    region: default
     registry-fetch-interval-seconds: 5
  
 zuul:

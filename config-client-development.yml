@@ -1,3 +1,18 @@
 user:
   role: Developer
   password: '{cipher}AQAas9aBCfS8Kyuzd2D+ZL4qgWX+Jh1c1KZdoG7owH0mN2ZdLp5tKR6suH4JiEKY1JzE56n2jS5Z9ce7HpiHuVMbxwSdwEneKuC7JU8RPMJCWh3r0EZ0iRV6S7b4nK9NYN1Fv1FjIT8FfvsQibpygmgyEe5oVsOSpunKWFL1D2tUPVd80aS/iL4pccOpD5ZnEC6p9i9ApMhAixtFLSdYGQU5xoxe86grHZrTIwh9/haRjVue5tku6Ag2s9YciBhGW0lj3YYi6/vuQ8KZoPL84ZSlyeacDSwBvS2AZ8wuqNFZT/5A45Vr5mrasjoUKE3aWm5OrHKVrB56w0MacjIDdVyb810xwJcx4QiUZZBbYwm7aXu94JaUxCfRFadD+XG+zD4='
+
+
+spring:
+  application: 
+    name: config-client
+
+server:
+  port: 0
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true
