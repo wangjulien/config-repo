@@ -3,39 +3,32 @@ spring:
     name: gateway
 
 server:
-  port: 8081
+  port: 8080
   
 eureka:
   client:
-    registry-fetch-interval-seconds: 5
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
  
 zuul:
   routes:
-    book-service:
-      path: /book-service/**
-      sensitive-headers: Set-Cookie,Authorization
-    rating-service:
-      path: /rating-service/**
-      sensitive-headers: Set-Cookie,Authorization
+    document:
+      path: /document-service/**
+      serviceId: document-service
     discovery:
       path: /discovery/**
-      sensitive-headers: Set-Cookie,Authorization
-      url: http://localhost:8082
+      serviceId: discovery
+      url: http://localhost:8761
  
 hystrix:
   command:
-    book-service:
+    document-service:
       execution:
         isolation:
           thread: 
-            timeout-in-milliseconds: 600000
-    rating-service:
-      execution:
-        isolation:
-          thread:
-            timeout-in-milliseconds: 600000
+            timeoutInMilliseconds: 600000
     discovery:
       execution:
         isolation:
           thread:
-            timeout-in-milliseconds: 600000
+            timeoutInMilliseconds: 600000
