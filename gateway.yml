@@ -12,17 +12,24 @@ eureka:
  
 zuul:
   routes:
-    echo:
-      path: /document-service/**
-      serviceId: my-document-service
-      stripPrefix: true
+    feign:
+      path: /document-api/**
+      serviceId: feign-client
+    turbine:
+      path: /turbine-api/**
+      serviceId: turbine-dashboard
     discovery:
       path: /discovery/**
       url: http://localhost:8761
  
 hystrix:
   command:
-    my-document-service:
+    feign:
+      execution:
+        isolation:
+          thread: 
+            timeoutInMilliseconds: 600000
+    turbine:
       execution:
         isolation:
           thread: 
@@ -32,12 +39,3 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 600000
-            
-my-document-service:
-  ribbon:
-    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
-    ListOfServers: http://192.168.4.14:35512
-    ConnectTimeout: 1000
-    ReadTimeout: 3000
-    MaxTotalHttpConnections: 500
-    MaxConnectionsPerHost: 100
