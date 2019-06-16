@@ -11,7 +11,7 @@ eureka:
       default-zone: ${EUREKA_URI:http://localhost:8761/eureka}
       
 turbine:
-  app-config: feign-client
+  app-config: centreon-host-feign-client
   aggregator:
     cluster-config: default
   cluster-name-expression: new String("default")

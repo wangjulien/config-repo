@@ -16,6 +16,9 @@ zuul:
     feign:
       path: /document-api/**
       serviceId: feign-client
+    centreon-host-feign:
+      path: /centreon-api/**
+      serviceId: centreon-host-feign-client
     turbine:
       path: /turbine-api/**
       serviceId: turbine-dashboard
@@ -31,9 +34,9 @@ hystrix:
           thread:
             timeoutInMilliseconds: 30000
 
-ribbon:
-  ReadTimeout: 30000
-  SocketTimeout: 30000
+#ribbon:
+#  ReadTimeout: 30000
+#  SocketTimeout: 30000
 
 management:
   endpoints:
