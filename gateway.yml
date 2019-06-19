@@ -13,13 +13,16 @@ eureka:
 zuul:
   ignoredServices: "*"
   routes:
-    feign:
+    feign-client:
       path: /document-api/**
       serviceId: feign-client
     centreon-host-feign:
       path: /centreon-api/**
       serviceId: centreon-host-feign-client
-    turbine:
+    centreon-studio-service:
+      path: /studio-api/**
+      serviceId: centreon-studio-service
+    turbine-dashboard:
       path: /turbine-api/**
       serviceId: turbine-dashboard
     discovery:

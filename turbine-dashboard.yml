@@ -1,5 +1,5 @@
 spring:
-  application: 
+  application:
     name: turbine-dashboard
 
 server:
@@ -9,9 +9,21 @@ eureka:
   client:
     service-url:
       default-zone: ${EUREKA_URI:http://localhost:8761/eureka}
-      
+
 turbine:
-  app-config: centreon-host-feign-client
+  app-config: centreon-host-feign-client, centreon-studio-service
   aggregator:
     cluster-config: default
   cluster-name-expression: new String("default")
+  combine-host: false
+  instance-url-suffix:
+    default: actuator/hystrix.stream
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+      cors:
+        allowed-origins: '*'
+        allowed-methods: '*'
